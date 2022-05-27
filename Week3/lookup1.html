@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>3.2P - Lookup Web App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <!-- VUE -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div class="container shadow" id="app">
+        <div class="row">
+            <div class="col">
+                <p class="display-5">Lookup App: Unit Search Filter</p>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="col-sm-2 col-form-label " for="code">Code:</label>
+                    <input id="code" class="form-control " type="text" v-model="filter.code"
+                        placeholder="Type to search..." />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="col-sm-2 col-form-label" for="desc">Description:</label>
+                    <input id="desc" class="form-control" type="text" v-model="filter.desc"
+                        placeholder="Type to search..." />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="row">
+                        <p class="display-6">Unit Type: </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="form-check form-check-inline col-md-12">
+                                <input class="form-check-input" type="radio" id="type1" v-model="filter.type"
+                                    value="Core">
+                                <label class="form-check-label " for="type1">Core</label>
+                            </div>
+                            <div class="form-check form-check-inline col-md-12">
+                                <input class="form-check-input" type="radio" id="type2" v-model="filter.type"
+                                    value="Software Development">
+                                <label class="form-check-label" for="type2">Software Development</label>
+                            </div>
+                            <div class="form-check form-check-inline col-md-12">
+                                <input class="form-check-input" type="radio" id="type3" v-model="filter.type"
+                                    value="Systems Analysis">
+                                <label class="form-check-label" for="type3">Systems Analysis</label>
+                            </div>
+                            <div class="form-check form-check-inline col-md-12">
+                                <input class="form-check-input" type="radio" id="type4" v-model="filter.type" value=""
+                                    checked>
+                                <label class="form-check-label" for="type4">All</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Table Data -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Credit Points</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="unit in filterSearch">
+                        <td> {{unit.code}}</td>
+                        <td> {{unit.desc}}</td>
+                        <td> {{unit.cp.toFixed(2)}}</td>
+                        <td> {{unit.type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            obj: [
+                { code: 'ICT10001', desc: 'Problem Solving with ICT', cp: 12.5, type: 'Core' },
+                { code: 'COS10005', desc: 'Web Development', cp: 12.5, type: 'Core' },
+                { code: 'INF10003', desc: 'Introduction to Business Information Systems', cp: 12.5, type: 'Core' },
+                { code: 'INF10002', desc: 'Database Analysis and Design', cp: 12.5, type: 'Core' },
+                { code: 'COS10009', desc: 'Introduction to Programming', cp: 12.5, type: 'Core' },
+                { code: 'INF30029', desc: 'Information Technology Project Management', cp: 12.5, type: 'Core' },
+                { code: 'ICT30005', desc: 'Professional Issues in Information Technology', cp: 12.5, type: 'Core' },
+                { code: 'ICT30001', desc: 'Information Technology Project', cp: 12.5, type: 'Core' },
+                { code: 'COS20001', desc: 'User-Centred Design', cp: 12.5, type: 'Software Development' },
+                { code: 'TNE10005', desc: 'Network Administration', cp: 12.5, type: 'Software Development' },
+                { code: 'COS20016', desc: 'Operating System Configuration', cp: 12.5, type: 'Software Development' },
+                { code: 'SWE20001', desc: 'Development Project 1 - Tools and Practices', cp: 12.5, type: 'Software Development' },
+                { code: 'COS20007', desc: 'Object Oriented Programming', cp: 12.5, type: 'Software Development' },
+                { code: 'COS30015', desc: 'IT Security', cp: 12.5, type: 'Software Development' },
+                { code: 'COS30043', desc: 'Interface Design and Development', cp: 12.5, type: 'Software Development' },
+                { code: 'COS30017', desc: 'Software Development for Mobile Devices', cp: 12.5, type: 'Software Development' },
+                { code: 'INF20012', desc: 'Enterprise Systems', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'ACC10007', desc: 'Financial Information for Decision Making', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'INF20003', desc: 'Requirements Analysis and Modelling', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'ACC20014', desc: 'Management Decision Making', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'INF30005', desc: 'Business Process Management', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'INF30003', desc: 'Business Information Systems Analysis', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'INF30020', desc: 'Information Systems Risk and Security', cp: 12.5, type: 'Systems Analysis' },
+                { code: 'INF30001', desc: 'Systems Acquisition & Implementation Management', cp: 12.5, type: 'Systems Analysis' }
+            ],
+            filter: [{ code: '', desc: '', type: '' }],
+            currentSort: 'desc',
+        },
+        computed: {
+            sortedObj: function () {
+                return this.obj.sort((a, b) => {
+                    let modifier = 1;
+                    if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+                    if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+                    return 0;
+                })
+            },
+            filterSearch: function () {
+                return this.sortedObj.filter((unit) => {
+                    const unitCode = unit.code.toLowerCase();
+                    const unitDesc = unit.desc.toLowerCase();
+                    const unitType = unit.type.toLowerCase();
+
+                    const searchCode = this.filter.code?.toLowerCase();
+                    const searchDesc = this.filter.desc?.toLowerCase();
+                    const searchType = this.filter.type?.toLowerCase();
+
+                    return unitCode.match(searchCode) && unitDesc.match(searchDesc) && unitType.match(searchType)
+                })
+            }
+
+        }
+
+    });
+</script>
+
+</html>
