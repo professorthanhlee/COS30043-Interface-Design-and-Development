@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.1C - My Registration Form</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- VUE CDN -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+    <!-- VUE Router CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.5.1/vue-router.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="container py-5 shadow justify-content-center align-items-center h-100" style="border-radius: 15px;">
+            <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+                <fieldset>
+                    <legend class="text-center mb-5">Registration Form</legend>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="fname" class="form-label">First Name</label>
+                            <input class="form-control" type="text" name="" id="fname">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="lname" class="form-label">Last Name</label>
+                            <input class="form-control" type="text" name="" id="lname">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="uname" class="form-label">User Name</label>
+                            <input class="form-control" type="text" name="" id="uname">
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-md-3">
+                            <label for="pwd" class="form-label">Password</label>
+                            <input class="form-control" type="password" name="" id="pwd">
+                        </div>
+                        <div class="col-md-">
+                            <label for="repwd" class="form-label">Confirm password</label>
+                            <input class="form-control" type="password" name="" id="repwd">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="">
+                        <label for="ugmail" class="form-label">Gmail</label>
+                        <input class="form-control" type="gmail" name="" id="ugmail">
+                    </div>
+                    <div class="">
+                        <label for="address" class="form-label">Street address</label>
+                        <input class="form-control" type="text" name="" id="address">
+                    </div>
+                    <div class="">
+                        <label for="suburb" class="form-label">Suburb</label>
+                        <input class="form-control" type="text" name="" id="suburb">
+                    </div>
+                    <div class="">
+                        <label for="pcode" class="form-label">Postcode </label>
+                        <input class="form-control" type="number" name="" id="pcode">
+                    </div>
+                    <div class="">
+                        <label for="unum" class="form-label">Mobile number</label>
+                        <input class="form-control" type="number" name="" id="unum">
+                    </div>
+                </fieldset>
+                <div class="">
+                    <button value="Submit" type="submit">Submit</button>
+                </div>
+                <div class="">
+                    <button value="Term" type="button">Show</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="js/appregistration2.js"></script>
+
+</html>
