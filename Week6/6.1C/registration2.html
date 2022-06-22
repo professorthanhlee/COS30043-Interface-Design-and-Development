@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>6.1C - My Registration Form</title>
+    <meta charset="utf-8" />
+    <!-- Bootstrap CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <div class="container w-25 fw-semibold mt-5" style="min-width: 600px;">
+                    <div class="card shadow">
+                        <h4 class="card-header text-center">Registration Form</h4>
+                        <div class="card-body">
+                            <v-form class="p-3" ref="myForm" method="post" v-model="valid" lazy-validation
+                                action="http://mercury.swin.edu.au/it000000/formtest.php" autocomplete="off">
+                                <fieldset>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <v-text-field name="firstName" v-model="firstName" :rules="nameRules"
+                                                label="First Name" required>
+                                            </v-text-field>
+                                        </div>
+                                        <div class="col-6">
+                                            <v-text-field name="lastName" v-model="lastName" :rules="nameRules"
+                                                label="Last Name" required>
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <v-text-field name="userName" v-model="userName" :rules="usernameRules"
+                                                label="User Name" required>
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <v-text-field name="password" v-model="password" :rules="pwdRules"
+                                                label="Password" type="password" required>
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <v-text-field name="re_password" v-model="re_password"
+                                                :rules="[(password === re_password) || 'Password does not match']"
+                                                label="Confirm Password" type="password" required>
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <v-text-field name="email" v-model="email" type="email" :rules="emailRules"
+                                                label="Email" required>
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <v-text-field name="address" v-model="address" :rules="streetRules"
+                                                label="Street address" :counter="40">
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <v-text-field name="suburb" v-model="suburb" :rules="suburbRules"
+                                                label="Suburb" :counter="30">
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <v-text-field name="postCode" v-model="postCode" :rules="postCodeRules"
+                                                label="Postcode" :counter="4">
+                                            </v-text-field>
+                                        </div>
+                                        <div class="col-9">
+                                            <v-text-field name="phoneNum" v-model="phoneNum" :rules="phoneNumRules"
+                                                label="Mobile number" :counter="10">
+                                            </v-text-field>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="row mt-5">
+                                    <div class="col-3">
+                                        <v-btn class="col" type="submit" :disabled="!valid" color="success"
+                                            @click="validate">
+                                            Submit
+                                        </v-btn>
+                                    </div>
+                                    <div class="col">
+                                        <v-btn class="col" type="button" color="blue-grey lighten-3"
+                                            @click="btnTerm =! btnTerm">
+                                            Terms and Condition
+                                        </v-btn>
+                                    </div>
+                                    <p class="fw-light mt-5" v-if="btnTerm">Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit.
+                                        Soluta et voluptates
+                                        illum amet quidem? Magnam iusto eaque qui eum veniam.</p>
+                                </div>
+                            </v-form>
+                        </div>
+                    </div>
+                </div>
+            </v-main>
+        </v-app>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="js/appregistration2.js"></script>
+</body>
+
+</html>
